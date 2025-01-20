@@ -44,22 +44,35 @@ INSERT INTO collection (collection_id,collection_name,collection_year) VALUES
 	 (1,'Now That''s What I Call Music!',2019);
 
 INSERT INTO track (track_id,track_name,duration,album_id) VALUES
-	 (1,'Radioactive',180.0,7),
-	 (2,'Demons',150.0,7),
-	 (4,'Just Dance',155.0,4),
-	 (5,'Poker Face',220.0,4),
-	 (7,'The Way I Am',190.0,13),
-	 (8,'The Real Slim Shady',170.0,13),
-	 (9,'Ocean Eyes',165.0,18),
-	 (10,'When the Party''s Over',170.0,18),
-	 (11,'Shake It Off',250.0,10),
-	 (12,'Blank Space',200.0,10),
-	 (13,'Not Afraid',150.0,15),
-	 (15,'My Dad''s Gone Crazy',245.0,14),
-	 (14,'My strange addiction',240.0,16),
-	 (16,'Rain on Me',190.0,6),
-	 (3,'Believer',140.0,9),
-	 (6,'Born This Way',140.0,5);
+	 (1,'Radioactive',180,7),
+	 (2,'Demons',150,7),
+	 (4,'Just Dance',155,4),
+	 (3,'Believer',140,9),
+	 (5,'Poker Face',220,4),
+	 (6,'Born This Way',140,5),
+	 (7,'The Way I Am',190,13),
+	 (8,'The Real Slim Shady',170,13),
+	 (9,'Ocean Eyes',165,18),
+	 (10,'When the Party''s Over',170,18),
+	 (11,'Shake It Off',250,10),
+	 (12,'Blank Space',200,10),
+	 (13,'Not Afraid',150,15),
+	 (15,'My Dad''s Gone Crazy',245,14),
+	 (14,'My strange addiction',240,16),
+	 (16,'Rain on Me',190,6),
+	 (17,'my own',220,4),
+	 (18,'own my',140,5),
+	 (19,'my',190,13),
+	 (20,'oh my god',170,13),
+	 (21,'myself',165,18),
+	 (22,'by myself',170,18),
+	 (23,'bemy self',250,10),
+	 (24,'myself by',200,10),
+	 (25,'by myself by',150,15),
+	 (26,'beemy',245,14),
+	 (27,'premyne',240,16);
+
+	
 
 INSERT INTO album_performer (id,album_id,performer_id) VALUES
 	 (1,1,1),

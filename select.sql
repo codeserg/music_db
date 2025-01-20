@@ -25,7 +25,7 @@ WHERE performer_name NOT LIKE '% %';
 /* 5. Название треков, которые содержат слово «мой» или «my». */
 
 SELECT track_name FROM track
-WHERE lower(track_name) LIKE '%my%' OR lower(track_name) LIKE '%мой%';
+WHERE track_name ~* '\mmy\M' OR track_name ~* '\mмой\M';
 
 /* Задание 3*/
 
@@ -36,13 +36,11 @@ LEFT JOIN performer_genre pg ON g.genre_id = pg.genre_id
 LEFT JOIN performer p ON p.performer_id = pg.performer_id
 GROUP BY g.genre_name ;
 
-
 /* 2.Количество треков, вошедших в альбомы 2019–2020 годов.*/
 
-SELECT album_name, count(*) FROM album a
-JOIN track t  ON  a.album_id  = t.album_id 
-WHERE a.release_year BETWEEN 2019 AND 2020
-GROUP BY album_name ;
+SELECT count(*) FROM track t
+JOIN album a ON t.album_id = a.album_id 
+WHERE a.release_year BETWEEN 2019 AND 2020;
 
 /* 3. Средняя продолжительность треков по каждому альбому.*/
 
@@ -52,11 +50,12 @@ GROUP BY album_name ;
 
 /* 4. Все исполнители, которые не выпустили альбомы в 2020 году. */
 
-SELECT DISTINCT p.performer_name FROM performer p 
-LEFT JOIN album_performer ap ON p.performer_id=ap.performer_id 
-LEFT JOIN album a ON ap.album_id  = a.album_id 
-WHERE release_year  <> 2020;
-
+SELECT n.performer_name FROM performer n
+WHERE n.performer_name NOT IN 
+	(SELECT p.performer_name FROM performer p 
+	LEFT JOIN album_performer ap ON p.performer_id=ap.performer_id 
+	LEFT JOIN album a ON ap.album_id  = a.album_id 
+	WHERE release_year  = 2020);
 
 /* 5. Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами).*/
 
@@ -105,3 +104,4 @@ HAVING count(*) = (
 	SELECT min(cnt) FROM (
 		SELECT count(*) AS cnt FROM track t
 		GROUP BY album_id));
+
